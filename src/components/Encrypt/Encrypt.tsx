@@ -1,16 +1,25 @@
 import { useEffect, useState } from "react";
-// import jwt from "jsonwebtoken";
-// const jwt = require("jsonwebtoken")
+import useInput from "../../hooks/use-input";
 const sign = require("jwt-encode");
 
 const Encrypt = () => {
-  const [enterdPassword, setEnterdPassword] = useState("");
-  const [enterdPassphrase, setEnterdPassphrase] = useState("");
+  const {
+    value: enterdPassword,
+    isValid: setEnterdPassword,
+    hasError: enterdPasswordValid,
+    valueChangeHandler: passwordInputChangeHandler,
+  } = useInput((value: any) => value.trim() !== "");
+
+  const {
+    value: enterdPassphrase,
+    isValid: setEnterdPassphrase,
+    hasError: enterdPassphraseValid,
+    valueChangeHandler: passphraseInputChangeHandler,
+  } = useInput((value: any) => value.trim() !== "");
+
   const [hasSubmited, setHasSubmited] = useState(false);
   const [token, setToken] = useState("");
 
-  const [enterdPasswordValid, setEnterdPasswordValid] = useState(true);
-  const [enterdPassphraseValid, setEnterdPassphraseValid] = useState(true);
   const [formIsValid, setFormIsValid] = useState(false);
 
   useEffect(() => {
@@ -21,31 +30,21 @@ const Encrypt = () => {
     }
   }, [enterdPassword, enterdPassphrase]);
 
-  const passwordInputChangeHandler = (event: any) => {
-    setEnterdPassword(event.currentTarget.value);
-  };
-  const passphraseInputChangeHandler = (event: any) => {
-    setEnterdPassphrase(event.currentTarget.value);
-  };
-
   const encodePassword = (password: string, phrase: string): string => {
     const token = sign({ password }, phrase);
     return token;
   };
 
   const resetState = () => {
-    setEnterdPassphraseValid(true);
     setHasSubmited(false);
   };
 
   const checkFormIsValid = () => {
     let valid = true;
     if (!enterdPassword) {
-      setEnterdPasswordValid(false);
       valid = false;
     }
     if (!enterdPassphrase) {
-      setEnterdPassphraseValid(false);
       valid = false;
     }
 
@@ -65,7 +64,7 @@ const Encrypt = () => {
   };
 
   const cssInputValid = (valid: boolean) => {
-    return valid ? "form-control" : "form-control is-invalid";
+    return valid ? "form-control is-invalid" : "form-control";
   };
   const cssPassword = cssInputValid(enterdPasswordValid);
   const cssPassphrase = cssInputValid(enterdPassphraseValid);
@@ -87,7 +86,7 @@ const Encrypt = () => {
             <small id="password-help" className="form-text text-muted">
               You data is not stored anywhere!
             </small>
-            {!enterdPasswordValid && (
+            {enterdPasswordValid && (
               <div className="alert alert-warning">
                 Password must not be empty
               </div>
@@ -104,7 +103,7 @@ const Encrypt = () => {
               placeholder="Password"
               onChange={passphraseInputChangeHandler}
             />
-            {!enterdPassphraseValid && (
+            {enterdPassphraseValid && (
               <div className="alert alert-warning">Must enter passphrase</div>
             )}
           </div>
