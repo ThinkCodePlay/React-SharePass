@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import jwt from "jsonwebtoken";
 // const jwt = require("jsonwebtoken")
 const sign = require("jwt-encode");
@@ -11,6 +11,15 @@ const Encrypt = () => {
 
   const [enterdPasswordValid, setEnterdPasswordValid] = useState(true);
   const [enterdPassphraseValid, setEnterdPassphraseValid] = useState(true);
+  const [formIsValid, setFormIsValid] = useState(false);
+
+  useEffect(() => {
+    if (enterdPassword && enterdPassphrase) {
+      setFormIsValid(true);
+    } else {
+      setFormIsValid(false);
+    }
+  }, [enterdPassword, enterdPassphrase]);
 
   const passwordInputChangeHandler = (event: any) => {
     setEnterdPassword(event.currentTarget.value);
@@ -25,7 +34,6 @@ const Encrypt = () => {
   };
 
   const resetState = () => {
-    setEnterdPasswordValid(true);
     setEnterdPassphraseValid(true);
     setHasSubmited(false);
   };
@@ -56,6 +64,12 @@ const Encrypt = () => {
     setHasSubmited(true);
   };
 
+  const cssInputValid = (valid: boolean) => {
+    return valid ? "form-control" : "form-control is-invalid";
+  };
+  const cssPassword = cssInputValid(enterdPasswordValid);
+  const cssPassphrase = cssInputValid(enterdPassphraseValid);
+
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
@@ -64,7 +78,7 @@ const Encrypt = () => {
             <label htmlFor="passwordInput">Enter Password here</label>
             <input
               type="text"
-              className="form-control"
+              className={cssPassword}
               id="passwordInput"
               aria-describedby="password-help"
               placeholder="Enter Password"
@@ -85,7 +99,7 @@ const Encrypt = () => {
             <label htmlFor="exampleInputPassword1">Passphrase</label>
             <input
               type="password"
-              className="form-control"
+              className={cssPassphrase}
               id="exampleInputPassword1"
               placeholder="Password"
               onChange={passphraseInputChangeHandler}
@@ -97,7 +111,11 @@ const Encrypt = () => {
         </div>
         <div className="row mt-3">
           <div className="col-sm-2">
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={!formIsValid}
+            >
               Encrypt
             </button>
           </div>
@@ -105,7 +123,7 @@ const Encrypt = () => {
       </form>
 
       {hasSubmited && (
-        <div className="card">
+        <div className="mt-3 card">
           <div className="card-header">Encrypted Password:</div>
           <div className="card-body">{token}</div>
         </div>
