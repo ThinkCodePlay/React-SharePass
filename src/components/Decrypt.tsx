@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useInput from "../hooks/use-input";
-const sign = require("jwt-encode");
+// const sign = require("jwt-encode");
+const CryptoJS = require("crypto-js");
 
 const Encrypt = () => {
   const {
@@ -20,11 +21,12 @@ const Encrypt = () => {
   const [hasSubmited, setHasSubmited] = useState(false);
   const [token, setToken] = useState("");
 
-  const formIsValid = (enterdPassword && enterdPassphrase)
+  const formIsValid = enterdPassword && enterdPassphrase;
 
-  const encodePassword = (password: string, phrase: string): string => {
-    const token = sign({ password }, phrase);
-    return token;
+  const decodePassword = (ciphertext: string, phrase: string): string => {
+    var bytes = CryptoJS.AES.decrypt(ciphertext, phrase);
+    var originalText = bytes.toString(CryptoJS.enc.Utf8);
+    return originalText;
   };
 
   const resetState = () => {
@@ -33,7 +35,7 @@ const Encrypt = () => {
 
   const checkFormIsValid = () => {
     let valid = true;
-    
+
     if (!enterdPassword) {
       valid = false;
     }
@@ -52,7 +54,7 @@ const Encrypt = () => {
       return;
     }
 
-    setToken(encodePassword(enterdPassword, enterdPassphrase));
+    setToken(decodePassword(enterdPassword, enterdPassphrase));
     setHasSubmited(true);
   };
 

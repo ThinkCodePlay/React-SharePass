@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useInput from "../hooks/use-input";
-const sign = require("jwt-encode");
+// const sign = require("jwt-encode");
+const CryptoJS = require("crypto-js");
 
 const Encrypt = () => {
   const {
@@ -23,8 +24,8 @@ const Encrypt = () => {
   const formIsValid = (enterdPassword && enterdPassphrase)
 
   const encodePassword = (password: string, phrase: string): string => {
-    const token = sign({ password }, phrase);
-    return token;
+    const ciphertext = CryptoJS.AES.encrypt(`${password}`, `${phrase}`).toString();
+    return ciphertext;
   };
 
   const resetState = () => {
