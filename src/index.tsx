@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter,BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Encrypt from "./components/Encrypt";
@@ -21,15 +21,16 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />}>
+          <Route path="" element={<Encrypt />} />
           <Route path="encrypt" element={<Encrypt />} />
           <Route path="decrypt" element={<Decrypt />} />
           <Route path="*" element={pageNotFound} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
 
