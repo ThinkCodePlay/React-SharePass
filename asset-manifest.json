@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/React-SharePass/static/css/main.ad115bcf.css",
+    "main.js": "/React-SharePass/static/js/main.d4d4c39e.js",
+    "static/js/787.20b08583.chunk.js": "/React-SharePass/static/js/787.20b08583.chunk.js",
+    "index.html": "/React-SharePass/index.html",
+    "main.ad115bcf.css.map": "/React-SharePass/static/css/main.ad115bcf.css.map",
+    "main.d4d4c39e.js.map": "/React-SharePass/static/js/main.d4d4c39e.js.map",
+    "787.20b08583.chunk.js.map": "/React-SharePass/static/js/787.20b08583.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ad115bcf.css",
+    "static/js/main.d4d4c39e.js"
+  ]
+}
