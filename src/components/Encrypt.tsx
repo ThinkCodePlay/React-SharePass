@@ -1,34 +1,26 @@
-import { useEffect, useState } from "react";
-import useInput from "../../hooks/use-input";
+import { useState } from "react";
+import useInput from "../hooks/use-input";
 const sign = require("jwt-encode");
 
 const Encrypt = () => {
   const {
     value: enterdPassword,
     isValid: setEnterdPassword,
-    hasError: enterdPasswordValid,
+    hasError: enterdPasswordHasError,
     valueChangeHandler: passwordInputChangeHandler,
   } = useInput((value: any) => value.trim() !== "");
 
   const {
     value: enterdPassphrase,
     isValid: setEnterdPassphrase,
-    hasError: enterdPassphraseValid,
+    hasError: enterdPassphraseHasError,
     valueChangeHandler: passphraseInputChangeHandler,
   } = useInput((value: any) => value.trim() !== "");
 
   const [hasSubmited, setHasSubmited] = useState(false);
   const [token, setToken] = useState("");
 
-  const [formIsValid, setFormIsValid] = useState(false);
-
-  useEffect(() => {
-    if (enterdPassword && enterdPassphrase) {
-      setFormIsValid(true);
-    } else {
-      setFormIsValid(false);
-    }
-  }, [enterdPassword, enterdPassphrase]);
+  const formIsValid = (enterdPassword && enterdPassphrase)
 
   const encodePassword = (password: string, phrase: string): string => {
     const token = sign({ password }, phrase);
@@ -41,6 +33,7 @@ const Encrypt = () => {
 
   const checkFormIsValid = () => {
     let valid = true;
+    
     if (!enterdPassword) {
       valid = false;
     }
@@ -66,11 +59,12 @@ const Encrypt = () => {
   const cssInputValid = (valid: boolean) => {
     return valid ? "form-control is-invalid" : "form-control";
   };
-  const cssPassword = cssInputValid(enterdPasswordValid);
-  const cssPassphrase = cssInputValid(enterdPassphraseValid);
+  const cssPassword = cssInputValid(enterdPasswordHasError);
+  const cssPassphrase = cssInputValid(enterdPassphraseHasError);
 
   return (
     <div className="container">
+      <h2>Encrypt Your Password</h2>
       <form onSubmit={handleSubmit}>
         <div className="row mt-3">
           <div className="form-group">
@@ -86,7 +80,7 @@ const Encrypt = () => {
             <small id="password-help" className="form-text text-muted">
               You data is not stored anywhere!
             </small>
-            {enterdPasswordValid && (
+            {enterdPasswordHasError && (
               <div className="alert alert-warning">
                 Password must not be empty
               </div>
@@ -103,7 +97,7 @@ const Encrypt = () => {
               placeholder="Password"
               onChange={passphraseInputChangeHandler}
             />
-            {enterdPassphraseValid && (
+            {enterdPassphraseHasError && (
               <div className="alert alert-warning">Must enter passphrase</div>
             )}
           </div>
