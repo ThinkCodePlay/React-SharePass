@@ -24,6 +24,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
+          <Route path="" element={<Encrypt />} />
           <Route path="encrypt" element={<Encrypt />} />
           <Route path="decrypt" element={<Decrypt />} />
           <Route path="*" element={pageNotFound} />

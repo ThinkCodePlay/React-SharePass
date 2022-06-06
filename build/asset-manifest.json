@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/React-Sharepass/static/css/main.ad115bcf.css",
-    "main.js": "/React-Sharepass/static/js/main.86e5294c.js",
-    "static/js/787.20b08583.chunk.js": "/React-Sharepass/static/js/787.20b08583.chunk.js",
-    "index.html": "/React-Sharepass/index.html",
-    "main.ad115bcf.css.map": "/React-Sharepass/static/css/main.ad115bcf.css.map",
-    "main.86e5294c.js.map": "/React-Sharepass/static/js/main.86e5294c.js.map",
-    "787.20b08583.chunk.js.map": "/React-Sharepass/static/js/787.20b08583.chunk.js.map"
+    "main.css": "/React-SharePass/static/css/main.ad115bcf.css",
+    "main.js": "/React-SharePass/static/js/main.d4d4c39e.js",
+    "static/js/787.20b08583.chunk.js": "/React-SharePass/static/js/787.20b08583.chunk.js",
+    "index.html": "/React-SharePass/index.html",
+    "main.ad115bcf.css.map": "/React-SharePass/static/css/main.ad115bcf.css.map",
+    "main.d4d4c39e.js.map": "/React-SharePass/static/js/main.d4d4c39e.js.map",
+    "787.20b08583.chunk.js.map": "/React-SharePass/static/js/787.20b08583.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ad115bcf.css",
-    "static/js/main.86e5294c.js"
+    "static/js/main.d4d4c39e.js"
   ]
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useInput from "../hooks/use-input";
+import useInput from "../hooks/user-input";
 // const sign = require("jwt-encode");
 const CryptoJS = require("crypto-js");
 

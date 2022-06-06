@@ -5,7 +5,7 @@ const Header = () => {
     <div className="container">
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <Link to={"/"} className="navbar-brand">
-          Share-Pass
+          SharePass
         </Link>
         <button
           className="navbar-toggler"
