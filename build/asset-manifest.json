@@ -1,29 +1,15 @@
 {
   "files": {
-<<<<<<< HEAD
-    "main.css": "/React-SharePass/static/css/main.ad115bcf.css",
-    "main.js": "/React-SharePass/static/js/main.d4d4c39e.js",
-    "static/js/787.20b08583.chunk.js": "/React-SharePass/static/js/787.20b08583.chunk.js",
-    "index.html": "/React-SharePass/index.html",
-    "main.ad115bcf.css.map": "/React-SharePass/static/css/main.ad115bcf.css.map",
-    "main.d4d4c39e.js.map": "/React-SharePass/static/js/main.d4d4c39e.js.map",
-    "787.20b08583.chunk.js.map": "/React-SharePass/static/js/787.20b08583.chunk.js.map"
+    "main.css": "/static/css/main.ad115bcf.css",
+    "main.js": "/static/js/main.faca31de.js",
+    "static/js/787.20b08583.chunk.js": "/static/js/787.20b08583.chunk.js",
+    "index.html": "/index.html",
+    "main.ad115bcf.css.map": "/static/css/main.ad115bcf.css.map",
+    "main.faca31de.js.map": "/static/js/main.faca31de.js.map",
+    "787.20b08583.chunk.js.map": "/static/js/787.20b08583.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ad115bcf.css",
-    "static/js/main.d4d4c39e.js"
-=======
-    "main.css": "./static/css/main.ad115bcf.css",
-    "main.js": "./static/js/main.e8206dd8.js",
-    "static/js/787.20b08583.chunk.js": "./static/js/787.20b08583.chunk.js",
-    "index.html": "./index.html",
-    "main.ad115bcf.css.map": "./static/css/main.ad115bcf.css.map",
-    "main.e8206dd8.js.map": "./static/js/main.e8206dd8.js.map",
-    "787.20b08583.chunk.js.map": "./static/js/787.20b08583.chunk.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.ad115bcf.css",
-    "static/js/main.e8206dd8.js"
->>>>>>> 25f4d99fddff2d6c938c1e522010fedd98ad7ac6
+    "static/js/main.faca31de.js"
   ]
 }

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/e003ff66-8c78-4ab0-90c3-b085840a8027/microsoft.web/sites/subscriptions/e003ff66-8c78-4ab0-90c3-b085840a8027/resourceGroups/react-sharepass-rg/providers/Microsoft.Web/sites/react-sharepass",
+    "appService.deploySubpath": "."
+}

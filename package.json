@@ -2,11 +2,7 @@
   "name": "share-pass",
   "version": "0.1.0",
   "private": true,
-<<<<<<< HEAD
-  "homepage": "https://ThinkCodePlay.github.io/React-SharePass",
-=======
-  "homepage": ".",
->>>>>>> 25f4d99fddff2d6c938c1e522010fedd98ad7ac6
+  "homepage": "/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
