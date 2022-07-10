@@ -4,6 +4,18 @@ import useInput from "../hooks/user-input";
 const CryptoJS = require("crypto-js");
 
 const Encrypt = () => {
+  const [toastText, setToastText] = useState("");
+
+  const copyHandler = () => {
+    setToastText("Password Copied!");
+    navigator.clipboard.writeText(token);
+  };
+
+  const shareHandler = () => {
+    setToastText("Share Link Copied!");
+    navigator.clipboard.writeText(`https://react-share-pass.vercel.app/decrypt/${token}`);
+  };
+
   const {
     value: enterdPassword,
     isValid: setEnterdPassword,
@@ -21,10 +33,13 @@ const Encrypt = () => {
   const [hasSubmited, setHasSubmited] = useState(false);
   const [token, setToken] = useState("");
 
-  const formIsValid = (enterdPassword && enterdPassphrase)
+  const formIsValid = enterdPassword && enterdPassphrase;
 
   const encodePassword = (password: string, phrase: string): string => {
-    const ciphertext = CryptoJS.AES.encrypt(`${password}`, `${phrase}`).toString();
+    const ciphertext = CryptoJS.AES.encrypt(
+      `${password}`,
+      `${phrase}`
+    ).toString();
     return ciphertext;
   };
 
@@ -34,7 +49,7 @@ const Encrypt = () => {
 
   const checkFormIsValid = () => {
     let valid = true;
-    
+
     if (!enterdPassword) {
       valid = false;
     }
@@ -110,6 +125,7 @@ const Encrypt = () => {
               className="btn btn-primary"
               disabled={!formIsValid}
             >
+              <i className="bi bi-lock"></i>
               Encrypt
             </button>
           </div>
@@ -119,7 +135,18 @@ const Encrypt = () => {
       {hasSubmited && (
         <div className="mt-3 card">
           <div className="card-header">Encrypted Password:</div>
-          <div className="card-body">{token}</div>
+          <div className="card-body">
+            <div className="card-text">{token}</div>
+            {/* <button className="btn btn-primary me-1" onClick={shareHandler}>
+              <i className="bi bi-send"></i>
+              Share
+            </button> */}
+            <button className="btn btn-primary" onClick={copyHandler}>
+              <i className="bi bi-clipboard"></i>
+              Copy
+            </button>
+            <label className="text-success ms-1">{toastText}</label>
+          </div>
         </div>
       )}
     </div>

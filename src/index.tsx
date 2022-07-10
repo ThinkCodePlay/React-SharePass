@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
@@ -28,7 +30,8 @@ root.render(
         <Route path="/" element={<App />}>
           <Route path="" element={<Encrypt />} />
           <Route path="encrypt" element={<Encrypt />} />
-          <Route path="decrypt" element={<Decrypt />} />
+          <Route path="decrypt/:password" element={<Decrypt />} />
+          <Route path="decrypt/" element={<Decrypt />} />
           <Route path="*" element={pageNotFound} />
         </Route>
       </Routes>

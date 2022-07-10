@@ -1,9 +1,11 @@
 import { useState } from "react";
+// import { useParams } from "react-router-dom";
 import useInput from "../hooks/user-input";
-// const sign = require("jwt-encode");
 const CryptoJS = require("crypto-js");
 
 const Encrypt = () => {
+  // let { password } = useParams();
+
   const {
     value: enterdPassword,
     isValid: setEnterdPassword,
@@ -78,6 +80,7 @@ const Encrypt = () => {
               aria-describedby="password-help"
               placeholder="Enter Password"
               onChange={passwordInputChangeHandler}
+              // value={password}
             />
             <small id="password-help" className="form-text text-muted">
               You data is not stored anywhere!
@@ -111,6 +114,7 @@ const Encrypt = () => {
               className="btn btn-primary"
               disabled={!formIsValid}
             >
+              <i className="bi bi-unlock"></i>
               Decrypt
             </button>
           </div>
