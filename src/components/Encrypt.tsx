@@ -1,6 +1,5 @@
 import { useState } from "react";
 import useInput from "../hooks/user-input";
-// const sign = require("jwt-encode");
 const CryptoJS = require("crypto-js");
 
 const Encrypt = () => {
@@ -21,14 +20,14 @@ const Encrypt = () => {
     isValid: setEnterdPassword,
     hasError: enterdPasswordHasError,
     valueChangeHandler: passwordInputChangeHandler,
-  } = useInput((value: any) => value.trim() !== "");
+  } = useInput((value: any) => value.trim() !== "", "");
 
   const {
     value: enterdPassphrase,
     isValid: setEnterdPassphrase,
     hasError: enterdPassphraseHasError,
     valueChangeHandler: passphraseInputChangeHandler,
-  } = useInput((value: any) => value.trim() !== "");
+  } = useInput((value: any) => value.trim() !== "", "");
 
   const [hasSubmited, setHasSubmited] = useState(false);
   const [token, setToken] = useState("");
@@ -137,10 +136,10 @@ const Encrypt = () => {
           <div className="card-header">Encrypted Password:</div>
           <div className="card-body">
             <div className="card-text">{token}</div>
-            {/* <button className="btn btn-primary me-1" onClick={shareHandler}>
+            <button className="btn btn-primary me-1" onClick={shareHandler}>
               <i className="bi bi-send"></i>
               Share
-            </button> */}
+            </button>
             <button className="btn btn-primary" onClick={copyHandler}>
               <i className="bi bi-clipboard"></i>
               Copy

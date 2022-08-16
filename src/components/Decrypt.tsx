@@ -1,24 +1,22 @@
 import { useState } from "react";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useInput from "../hooks/user-input";
 const CryptoJS = require("crypto-js");
 
 const Encrypt = () => {
-  // let { password } = useParams();
+  let { password } = useParams();
 
   const {
     value: enterdPassword,
-    isValid: setEnterdPassword,
     hasError: enterdPasswordHasError,
     valueChangeHandler: passwordInputChangeHandler,
-  } = useInput((value: any) => value.trim() !== "");
+  } = useInput((value: any) => value !== "", password as string);
 
   const {
     value: enterdPassphrase,
-    isValid: setEnterdPassphrase,
     hasError: enterdPassphraseHasError,
     valueChangeHandler: passphraseInputChangeHandler,
-  } = useInput((value: any) => value.trim() !== "");
+  } = useInput((value: any) => value !== "", "");
 
   const [hasSubmited, setHasSubmited] = useState(false);
   const [token, setToken] = useState("");
@@ -68,6 +66,7 @@ const Encrypt = () => {
 
   return (
     <div className="container">
+      {enterdPassword}
       <h2>Decrypt Your Password</h2>
       <form onSubmit={handleSubmit}>
         <div className="row mt-3">
@@ -80,7 +79,7 @@ const Encrypt = () => {
               aria-describedby="password-help"
               placeholder="Enter Password"
               onChange={passwordInputChangeHandler}
-              // value={password}
+              value={enterdPassword}
             />
             <small id="password-help" className="form-text text-muted">
               You data is not stored anywhere!
