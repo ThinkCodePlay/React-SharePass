@@ -66,7 +66,6 @@ const Encrypt = () => {
 
   return (
     <div className="container">
-      {enterdPassword}
       <h2>Decrypt Your Password</h2>
       <form onSubmit={handleSubmit}>
         <div className="row mt-3">
